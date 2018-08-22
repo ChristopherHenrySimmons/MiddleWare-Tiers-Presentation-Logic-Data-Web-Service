@@ -1,0 +1,698 @@
+-- =============================================
+-- Database: WattsALoan
+-- =============================================
+USE master
+GO
+-- Drop the database if it already exists
+IF  EXISTS (
+	SELECT name 
+		FROM sys.databases 
+		WHERE name = N'WattsALoan'
+)
+DROP DATABASE WattsALoan
+GO
+
+CREATE DATABASE WattsALoan
+GO
+-- =========================================
+-- Table: Employees
+-- =========================================
+USE WattsALoan
+GO
+
+IF OBJECT_ID(N'dbo.Employees', N'U') IS NOT NULL
+  DROP TABLE dbo.Employees
+GO
+
+CREATE TABLE dbo.Employees
+(
+    EmployeeID int identity(1,1) NOT NULL,
+    EmployeeNumber nchar(10) NULL,
+    FirstName nvarchar(20) NULL,
+    LastName nvarchar(10),
+    FullName AS ((LastName+ ', N') + FirstName),
+    Title nvarchar(100),
+    HourlySalary money,
+    Username nvarchar(20),
+    Password nvarchar(20),
+    CONSTRAINT PK_Employees PRIMARY KEY(EmployeeID)
+)
+GO
+INSERT INTO dbo.Employees(EmployeeNumber, FirstName, LastName, Title, HourlySalary)
+VALUES(N'293747', N'Jeanne', N'Tryler', N'Accounts Manager', 22.24);
+GO
+INSERT INTO dbo.Employees(EmployeeNumber, FirstName, LastName, Title, HourlySalary)
+VALUES(N'492947', N'Helene', N'Gustman', N'Accounts Representative', 14.55);
+GO
+INSERT INTO dbo.Employees(EmployeeNumber, FirstName, LastName, Title, HourlySalary)
+VALUES(N'804685', N'Ernest', N'Thomas', N'Accounts Representative', 12.75);
+GO
+-- =========================================
+-- Table: LoanTypes
+-- =========================================
+USE WattsALoan
+GO
+
+IF OBJECT_ID(N'dbo.LoanTypes', N'U') IS NOT NULL
+  DROP TABLE dbo.LoanTypes
+GO
+
+CREATE TABLE dbo.LoanTypes
+(
+    LoanTypeID int identity(1,1) NOT NULL, 
+    LoanType nvarchar(50) NOT NULL, 
+    CONSTRAINT PK_LoanTypes PRIMARY KEY(LoanTypeID)
+);
+GO
+INSERT INTO LoanTypes(LoanType) VALUES(N'Personal Loan');
+GO
+INSERT INTO LoanTypes(LoanType) VALUES(N'Car Financing');
+GO
+INSERT INTO LoanTypes(LoanType) VALUES(N'Credit Card');
+GO
+INSERT INTO LoanTypes(LoanType) VALUES(N'Furniture Loan');
+GO
+-- =========================================
+-- Table: Customers
+-- =========================================
+USE WattsALoan
+GO
+
+IF OBJECT_ID(N'dbo.Customers', N'U') IS NOT NULL
+  DROP TABLE dbo.Customers
+GO
+
+CREATE TABLE dbo.Customers
+(
+    CustomerID int identity(1,1) NOT NULL,
+    DateCreated datetime2 NULL,
+    FullName nvarchar(50) NOT NULL,
+    BillingAddress nvarchar(100),
+    BillingCity nvarchar(50),
+    BillingState nvarchar(50),
+    BillingZIPCide nvarchar(10),
+    EmailAddress nvarchar(100),
+    CONSTRAINT PK_Customers PRIMARY KEY(CustomerID)
+)
+GO
+INSERT INTO Customers(DateCreated, FullName,
+    BillingAddress, BillingCity, BillingState,
+    BillingZIPCide, EmailAddress)
+VALUES(N'2/26/2004', N'Julius Ramse',
+       '927 Feuler Ave', N'Silver Spring', 
+       'MD', N'20904', N'ramses1990@netscape.net');
+GO
+INSERT INTO Customers(DateCreated, FullName,
+    BillingAddress, BillingCity, BillingState,
+	BillingZIPCide)
+VALUES(N'06/22/2006', N'Gertrude Vaillant',
+       '10055 Larsenic Rd', N'Takoma Park', 
+       'MD', N'20910');
+GO
+INSERT INTO Customers(DateCreated, FullName,
+    BillingAddress,	BillingCity, BillingState,
+	BillingZIPCide, EmailAddress)
+VALUES(N'12/3/2004', N'James Barrouch',
+       '4204 Fallon Drive', N'Silver Spring',
+       'MD', N'20906', N'barrouchj@hotmail.com');
+GO
+INSERT INTO Customers(DateCreated, FullName,
+    BillingAddress,	BillingCity, BillingState,
+	BillingZIPCide)
+VALUES(N'08/02/2006', N'Christine Rougher',
+       '825 Manning Street', N'Alexandria', 
+       'VA', N'22231');
+GO
+INSERT INTO Customers(DateCreated, FullName,
+    BillingAddress,	BillingCity, BillingState,
+	BillingZIPCide, EmailAddress)
+VALUES(N'10/08/2006', N'Patrick Heller',
+       '2480 Clarington Drive NW', N'Washington', 
+       'DC', N'20006', N'hellerp@yahooo.com');
+GO
+-- =========================================
+-- Table: LoanAllocation
+-- =========================================
+USE WattsALoan
+GO
+
+IF OBJECT_ID(N'dbo.LoanAllocations', N'U') IS NOT NULL
+  DROP TABLE dbo.LoanAllocations
+GO
+
+CREATE TABLE dbo.LoanAllocations
+(
+    LoanAllocationID int identity(1,1) NOT NULL,
+    DatePrepared datetime2 NOT NULL, 
+    EmployeeID int NULL
+		CONSTRAINT FK_LoanPreparer
+		FOREIGN KEY REFERENCES Employees(EmployeeID),
+    CustomerID int NOT NULL
+		CONSTRAINT FK_LoanReceiver
+		FOREIGN KEY REFERENCES Customers(CustomerID),
+    AccountNumber nchar(10),
+    LoanTypeID int NOT NULL
+		CONSTRAINT FK_LoanTypes
+		FOREIGN KEY REFERENCES LoanTypes(LoanTypeID),
+    LoanAmount money NOT NULL,
+    InterestRate decimal(6,2) NOT NULL,
+    Periods decimal(6,2) NOT NULL,
+    InterestAmount AS ((LoanAmount*(InterestRate/(100)))*(Periods/(12))),
+    FutureValue AS (LoanAmount+(LoanAmount*(InterestRate/(100)))*(Periods/(12))),
+    MonthlyPayment AS ((LoanAmount+(LoanAmount*(InterestRate/(100)))*(Periods/(12)))/Periods),
+    Notes Text,
+    CONSTRAINT PK_LoanAllocations PRIMARY KEY(LoanAllocationID)
+)
+GO
+INSERT INTO LoanAllocations(DatePrepared, EmployeeID,
+	CustomerID, AccountNumber, LoanTypeID, LoanAmount,
+    InterestRate, Periods, Notes)
+VALUES(N'2/26/2004', 2, 1, N'9171394', 4, 6500.00, 12.65, 36, 
+       'The loan will be delivered by our furniture business partner Helios Furnian');
+GO
+INSERT INTO LoanAllocations(DatePrepared, EmployeeID,
+	CustomerID, AccountNumber, LoanTypeID, LoanAmount,
+    InterestRate, Periods, Notes)
+VALUES(N'06/22/2007', 2, 2, N'8628064', 2, 16500.00, 10.20, 60, 
+       'For this car loan, our partner Arlington Honda will process and deliver the car.');
+GO
+INSERT INTO LoanAllocations(DatePrepared, EmployeeID,
+	CustomerID, AccountNumber, LoanTypeID, LoanAmount,
+    InterestRate, Periods, Notes)
+VALUES(N'12/3/2006', 1, 3, N'8468364', 3, 500.00, 18.65, 48, 
+       'This is a regular credit card.');
+GO
+INSERT INTO LoanAllocations(DatePrepared, EmployeeID,
+	CustomerID, AccountNumber, LoanTypeID, LoanAmount,
+    InterestRate, Periods, Notes)
+VALUES(N'08/02/2006', 3, 4, N'2483047', 1, 3500.00, 12.74, 36, 
+       'This is personal/cash loan allocated to a customer who walked in the store and requested it.');
+GO
+INSERT INTO LoanAllocations(DatePrepared, EmployeeID,
+	CustomerID, AccountNumber, LoanTypeID, LoanAmount,
+    InterestRate, Periods, Notes)
+VALUES(N'10/08/2006', 2, 5, N'1311804', 4, 22748.36, 12.28, 60, 
+       'This is a regular car financing loan');
+GO
+-- =========================================
+-- Table: Payments
+-- =========================================
+USE WattsALoan
+GO
+
+IF OBJECT_ID(N'dbo.Payments', N'U') IS NOT NULL
+  DROP TABLE dbo.Payments
+GO
+
+CREATE TABLE dbo.Payments
+(
+    PaymentID int identity(1, 1) NOT NULL,
+    PaymentDate datetime2 NOT NULL, 
+    EmployeeID int NULL
+		CONSTRAINT FK_Employees
+		FOREIGN KEY REFERENCES Employees(EmployeeID),
+    LoanAllocationID int NOT NULL
+		CONSTRAINT FK_LoanAllocations
+		FOREIGN KEY REFERENCES LoanAllocations(LoanAllocationID),
+    PaymentAmount money NOT NULL,
+    Balance money,
+    Notes Text,
+    CONSTRAINT PK_Payments PRIMARY KEY(PaymentID)
+)
+GO
+
+-- Stored Procedures
+
+USE WattsALoan;
+GO
+
+CREATE PROCEDURE SpecifyCurrentBalance
+   (@PmtDate datetime2,
+    @EmplID int,
+    @LaID int,
+    @PmtAmt money,
+    @Response bit OUTPUT)
+AS
+
+BEGIN TRANSACTION;
+
+BEGIN TRY
+    -- Get the amount that was lent to the customer
+    DECLARE @AmountOfLoan money;
+    SET	@AmountOfLoan = (SELECT las.FutureValue
+                         FROM LoanAllocations las
+                         WHERE (las.LoanAllocationID = @LaID));
+
+    -- If the customer had already made at least one payment,
+    -- get the current balance of the customer's account
+    DECLARE @CurrentBalance money;
+    SET     @CurrentBalance = (SELECT MIN(pay.Balance)
+                               FROM Payments pay
+                               WHERE (pay.LoanAllocationID = @LaID));
+
+    -- If the customer has never made a payment (yet),
+    -- to specify the balance, subtract the current payment
+    -- from the original amount of the loan
+    IF      @CurrentBalance IS NULL
+	BEGIN
+	    INSERT INTO Payments(PaymentDate, EmployeeID,
+	 		 LoanAllocationID, PaymentAmount, Balance)
+	    VALUES(@PmtDate, @EmplID, @LaID, @PmtAmt,
+		       @AmountOfLoan - @PmtAmt);
+	END
+    -- If the customer had already at least one payment,
+    -- subtract the current payment from the previous balance
+    ELSE
+	BEGIN
+	    INSERT INTO Payments(PaymentDate, EmployeeID,
+				LoanAllocationID, PaymentAmount, Balance)
+	    VALUES(@PmtDate, @EmplID, @LaID,
+		       @PmtAmt, @CurrentBalance - @PmtAmt);
+	END
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+                END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+        END
+
+GO
+
+USE WattsALoan;
+GO
+
+
+--Insert New Employee
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE InsertEmployee(
+	    @EmployeeNumber nchar(10)
+	   ,@FirstName nvarchar(20) 
+	   ,@LastName nvarchar(10)
+    	   ,@Title nvarchar(100)
+    	   ,@HourlySalary money
+	   ,@Response bit OUTPUT)
+    
+AS
+BEGIN TRANSACTION;
+
+BEGIN TRY
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+   	INSERT INTO [WattsALoan].[dbo].[Employees]
+           ([EmployeeNumber]
+           ,[FirstName]
+           ,[LastName]
+           ,[Title]
+           ,[HourlySalary]
+           )
+        VALUES
+           (@EmployeeNumber
+	   ,@FirstName
+           ,@LastName
+           ,@Title
+           ,@HourlySalary)
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+        END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+    END
+
+GO
+
+USE WattsALoan;
+GO
+-- Update Employee
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+CREATE PROCEDURE UpdateEmployee( 
+	@EmployeeID int,
+	@EmployeeNumber nchar(10),
+	@FirstName nvarchar(20), 
+	@LastName nvarchar(10),
+        @Title nvarchar(100),
+        @HourlySalary money,
+	@Response bit OUTPUT)
+AS
+BEGIN TRANSACTION;
+
+BEGIN TRY
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    UPDATE [WattsALoan].[dbo].[Employees]
+    SET [EmployeeNumber] = @EmployeeNumber
+       ,[FirstName] = @FirstName
+       ,[LastName] = @LastName
+       ,[Title] = @Title
+       ,[HourlySalary] = @HourlySalary
+      
+    WHERE EmployeeID = @EmployeeID
+
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+        END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+    END
+
+GO
+
+
+USE WattsALoan;
+GO
+
+-- Delete an Employee
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+
+CREATE PROCEDURE DeleteEmployee
+	-- Add the parameters for the stored procedure here
+	(@EmployeeID int,
+	 @Response bit OUTPUT)
+AS
+BEGIN TRANSACTION;
+
+BEGIN TRY
+
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    DELETE FROM [WattsALoan].[dbo].[Employees]
+    WHERE EmployeeID = @EmployeeID
+
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+        END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+    END
+
+GO
+
+
+
+USE WattsALoan;
+GO
+
+--Insert new loan type
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+CREATE PROCEDURE InsertLoan 
+	-- Add the parameters for the stored procedure here
+	(@LoanType nvarchar(50),
+	 @Response bit OUTPUT)
+
+AS
+BEGIN TRANSACTION;
+
+BEGIN TRY
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    INSERT INTO [WattsALoan].[dbo].[LoanTypes]
+           ([LoanType])
+     VALUES
+           (@LoanType)
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+        END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+    END
+
+GO
+
+
+
+USE WattsALoan;
+GO
+
+--Insert Customer
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+CREATE PROCEDURE InsertCustomer 
+    (@DateCreated datetime2
+    ,@FullName nvarchar(50)
+    ,@BillingAddress nvarchar(100)
+    ,@BillingCity nvarchar(50)
+    ,@BillingState nvarchar(50)
+    ,@BillingZIPCide nvarchar(10)
+    ,@EmailAddress nvarchar(100)
+    ,@Response bit OUTPUT)
+AS
+BEGIN TRANSACTION;
+
+BEGIN TRY
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    INSERT INTO [WattsALoan].[dbo].[Customers]
+           ([DateCreated]
+	   ,[FullName]
+           ,[BillingAddress]
+           ,[BillingCity]
+           ,[BillingState]
+           ,[BillingZIPCide]
+           ,[EmailAddress])
+     VALUES
+           (@DateCreated
+	   ,@FullName
+           ,@BillingAddress
+     	   ,@BillingCity
+	   ,@BillingState
+	   ,@BillingZIPCide
+           ,@EmailAddress)
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+        END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+    END
+
+GO
+
+
+USE WattsALoan;
+GO
+
+--Update Customer
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+CREATE PROCEDURE UpdateCustomer
+       (@CustomerID int
+       ,@DateCreated datetime2
+       ,@FullName nvarchar(50)
+       ,@BillingAddress nvarchar(100)
+       ,@BillingCity nvarchar(50)
+       ,@BillingState nvarchar(50)
+       ,@BillingZIPCide nvarchar(10)
+       ,@EmailAddress nvarchar(100)
+       ,@Response bit OUTPUT)
+AS
+BEGIN TRANSACTION;
+
+BEGIN TRY
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    UPDATE [WattsALoan].[dbo].[Customers]
+    SET [DateCreated] = @DateCreated
+       ,[FullName] = @FullName
+       ,[BillingAddress] = @BillingAddress
+       ,[BillingCity] = @BillingCity
+       ,[BillingState] = @BillingState
+       ,[BillingZIPCide] = @BillingZIPCide
+       ,[EmailAddress] = @EmailAddress
+    WHERE [CustomerID] = @CustomerID
+
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+        END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+    END
+
+GO
+
+
+
+USE WattsALoan;
+GO
+
+-- Create Loan Allocation
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+CREATE PROCEDURE InsertLoanAllocation 
+			(@DatePrepared datetime2(7)
+           		,@EmployeeID int
+           		,@CustomerID int
+           		,@AccountNumber nchar(10)
+           		,@LoanTypeID int
+           		,@LoanAmount money
+           		,@InterestRate decimal(6,2)
+           		,@Periods decimal(6,2)
+	   		,@Response bit OUTPUT)
+
+AS
+BEGIN TRANSACTION;
+
+BEGIN TRY
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    INSERT INTO [WattsALoan].[dbo].[LoanAllocations]
+           ([DatePrepared]
+           ,[EmployeeID]
+           ,[CustomerID]
+           ,[AccountNumber]
+           ,[LoanTypeID]
+           ,[LoanAmount]
+           ,[InterestRate]
+           ,[Periods])
+     VALUES
+           (@DatePrepared
+           ,@EmployeeID
+           ,@CustomerID
+           ,@AccountNumber
+           ,@LoanTypeID
+           ,@LoanAmount
+           ,@InterestRate
+           ,@Periods)
+
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION;
+			SELECT @Response = 0;
+        END
+        
+END CATCH;
+
+IF @@TRANCOUNT > 0
+	BEGIN
+		COMMIT TRANSACTION;
+		SELECT @Response = 1;
+    END
+
+GO
+
+
+
+-- Code to execute stored procedures in SQL Server
+--USE WattsALoan;
+--GO
+--EXECUTE SpecifyCurrentBalance '03/25/2004', 2, 1, 249.08;
+--GO
+--EXECUTE SpecifyCurrentBalance '01/30/2006', 2, 5, 611.93;
+--GO
+--EXECUTE SpecifyCurrentBalance '04/20/2004', 1, 1, 249.08;
+--GO
+--EXECUTE SpecifyCurrentBalance '10/28/2006', 2, 4, 134.38;
+--GO
