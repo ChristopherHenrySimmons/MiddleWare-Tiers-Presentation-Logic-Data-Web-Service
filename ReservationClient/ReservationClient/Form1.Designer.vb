@@ -43,14 +43,27 @@ Partial Class Form1
         Me.TextBoxBillingZIPCide = New System.Windows.Forms.TextBox()
         Me.LabelEmailAddress = New System.Windows.Forms.Label()
         Me.TextBoxEmailAddress = New System.Windows.Forms.TextBox()
-        Me.ButtonInsert = New System.Windows.Forms.Button()
+        Me.ButtonInsertCustomer = New System.Windows.Forms.Button()
         Me.TextBoxDeleteEmployeeReturn = New System.Windows.Forms.TextBox()
         Me.TextBoxInsertCustomerReturn = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelEmployeeNumber = New System.Windows.Forms.Label()
+        Me.TextBoxEmployeeNumber = New System.Windows.Forms.TextBox()
+        Me.LabelFirstName = New System.Windows.Forms.Label()
+        Me.TextBoxFirstName = New System.Windows.Forms.TextBox()
+        Me.LabelLastName = New System.Windows.Forms.Label()
+        Me.TextBoxLastName = New System.Windows.Forms.TextBox()
+        Me.LabelTitle = New System.Windows.Forms.Label()
+        Me.TextBoxTitle = New System.Windows.Forms.TextBox()
+        Me.LabelHourlySalary = New System.Windows.Forms.Label()
+        Me.TextBoxHourlySalary = New System.Windows.Forms.TextBox()
+        Me.ButtonInsertEmployee = New System.Windows.Forms.Button()
+        Me.TextBoxInsertEmployeeReturn = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(817, 393)
+        Me.Button1.Location = New System.Drawing.Point(822, 495)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 0
@@ -59,7 +72,7 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(817, 422)
+        Me.TextBox1.Location = New System.Drawing.Point(822, 524)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(75, 20)
         Me.TextBox1.TabIndex = 1
@@ -68,7 +81,7 @@ Partial Class Form1
         '
         Me.seatType.FormattingEnabled = True
         Me.seatType.Items.AddRange(New Object() {"Window", "Middle", "Aisle"})
-        Me.seatType.Location = New System.Drawing.Point(817, 339)
+        Me.seatType.Location = New System.Drawing.Point(822, 441)
         Me.seatType.Name = "seatType"
         Me.seatType.Size = New System.Drawing.Size(121, 21)
         Me.seatType.TabIndex = 2
@@ -77,7 +90,7 @@ Partial Class Form1
         '
         Me.classType.FormattingEnabled = True
         Me.classType.Items.AddRange(New Object() {"Economy", "First"})
-        Me.classType.Location = New System.Drawing.Point(817, 366)
+        Me.classType.Location = New System.Drawing.Point(822, 468)
         Me.classType.Name = "classType"
         Me.classType.Size = New System.Drawing.Size(121, 21)
         Me.classType.TabIndex = 3
@@ -126,9 +139,9 @@ Partial Class Form1
         Me.LabelInsertCustomer.Font = New System.Drawing.Font("OCR A Std", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelInsertCustomer.Location = New System.Drawing.Point(321, 9)
         Me.LabelInsertCustomer.Name = "LabelInsertCustomer"
-        Me.LabelInsertCustomer.Size = New System.Drawing.Size(234, 22)
+        Me.LabelInsertCustomer.Size = New System.Drawing.Size(250, 22)
         Me.LabelInsertCustomer.TabIndex = 8
-        Me.LabelInsertCustomer.Text = "InsertCustomer"
+        Me.LabelInsertCustomer.Text = "Insert Customer"
         '
         'LabelFullName
         '
@@ -238,15 +251,15 @@ Partial Class Form1
         Me.TextBoxEmailAddress.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxEmailAddress.TabIndex = 19
         '
-        'ButtonInsert
+        'ButtonInsertCustomer
         '
-        Me.ButtonInsert.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonInsert.Location = New System.Drawing.Point(480, 295)
-        Me.ButtonInsert.Name = "ButtonInsert"
-        Me.ButtonInsert.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonInsert.TabIndex = 21
-        Me.ButtonInsert.Text = "INSERT"
-        Me.ButtonInsert.UseVisualStyleBackColor = True
+        Me.ButtonInsertCustomer.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonInsertCustomer.Location = New System.Drawing.Point(325, 337)
+        Me.ButtonInsertCustomer.Name = "ButtonInsertCustomer"
+        Me.ButtonInsertCustomer.Size = New System.Drawing.Size(152, 23)
+        Me.ButtonInsertCustomer.TabIndex = 21
+        Me.ButtonInsertCustomer.Text = "INSERT CUSTOMER"
+        Me.ButtonInsertCustomer.UseVisualStyleBackColor = True
         '
         'TextBoxDeleteEmployeeReturn
         '
@@ -259,19 +272,150 @@ Partial Class Form1
         'TextBoxInsertCustomerReturn
         '
         Me.TextBoxInsertCustomerReturn.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxInsertCustomerReturn.Location = New System.Drawing.Point(393, 324)
+        Me.TextBoxInsertCustomerReturn.Location = New System.Drawing.Point(325, 366)
         Me.TextBoxInsertCustomerReturn.Name = "TextBoxInsertCustomerReturn"
-        Me.TextBoxInsertCustomerReturn.Size = New System.Drawing.Size(32, 23)
+        Me.TextBoxInsertCustomerReturn.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxInsertCustomerReturn.TabIndex = 23
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("OCR A Std", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(647, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(250, 22)
+        Me.Label1.TabIndex = 24
+        Me.Label1.Text = "Insert Employee"
+        '
+        'LabelEmployeeNumber
+        '
+        Me.LabelEmployeeNumber.AutoSize = True
+        Me.LabelEmployeeNumber.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelEmployeeNumber.Location = New System.Drawing.Point(648, 55)
+        Me.LabelEmployeeNumber.Name = "LabelEmployeeNumber"
+        Me.LabelEmployeeNumber.Size = New System.Drawing.Size(142, 14)
+        Me.LabelEmployeeNumber.TabIndex = 26
+        Me.LabelEmployeeNumber.Text = "Employee Number"
+        '
+        'TextBoxEmployeeNumber
+        '
+        Me.TextBoxEmployeeNumber.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxEmployeeNumber.Location = New System.Drawing.Point(651, 72)
+        Me.TextBoxEmployeeNumber.Name = "TextBoxEmployeeNumber"
+        Me.TextBoxEmployeeNumber.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxEmployeeNumber.TabIndex = 25
+        '
+        'LabelFirstName
+        '
+        Me.LabelFirstName.AutoSize = True
+        Me.LabelFirstName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelFirstName.Location = New System.Drawing.Point(648, 99)
+        Me.LabelFirstName.Name = "LabelFirstName"
+        Me.LabelFirstName.Size = New System.Drawing.Size(97, 14)
+        Me.LabelFirstName.TabIndex = 28
+        Me.LabelFirstName.Text = "First Name"
+        '
+        'TextBoxFirstName
+        '
+        Me.TextBoxFirstName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxFirstName.Location = New System.Drawing.Point(651, 116)
+        Me.TextBoxFirstName.Name = "TextBoxFirstName"
+        Me.TextBoxFirstName.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxFirstName.TabIndex = 27
+        '
+        'LabelLastName
+        '
+        Me.LabelLastName.AutoSize = True
+        Me.LabelLastName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelLastName.Location = New System.Drawing.Point(648, 146)
+        Me.LabelLastName.Name = "LabelLastName"
+        Me.LabelLastName.Size = New System.Drawing.Size(88, 14)
+        Me.LabelLastName.TabIndex = 30
+        Me.LabelLastName.Text = "Last Name"
+        '
+        'TextBoxLastName
+        '
+        Me.TextBoxLastName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxLastName.Location = New System.Drawing.Point(651, 163)
+        Me.TextBoxLastName.Name = "TextBoxLastName"
+        Me.TextBoxLastName.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxLastName.TabIndex = 29
+        '
+        'LabelTitle
+        '
+        Me.LabelTitle.AutoSize = True
+        Me.LabelTitle.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelTitle.Location = New System.Drawing.Point(648, 189)
+        Me.LabelTitle.Name = "LabelTitle"
+        Me.LabelTitle.Size = New System.Drawing.Size(52, 14)
+        Me.LabelTitle.TabIndex = 32
+        Me.LabelTitle.Text = "Title"
+        '
+        'TextBoxTitle
+        '
+        Me.TextBoxTitle.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxTitle.Location = New System.Drawing.Point(651, 206)
+        Me.TextBoxTitle.Name = "TextBoxTitle"
+        Me.TextBoxTitle.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxTitle.TabIndex = 31
+        '
+        'LabelHourlySalary
+        '
+        Me.LabelHourlySalary.AutoSize = True
+        Me.LabelHourlySalary.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHourlySalary.Location = New System.Drawing.Point(648, 232)
+        Me.LabelHourlySalary.Name = "LabelHourlySalary"
+        Me.LabelHourlySalary.Size = New System.Drawing.Size(124, 14)
+        Me.LabelHourlySalary.TabIndex = 34
+        Me.LabelHourlySalary.Text = "Hourly Salary"
+        '
+        'TextBoxHourlySalary
+        '
+        Me.TextBoxHourlySalary.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxHourlySalary.Location = New System.Drawing.Point(651, 249)
+        Me.TextBoxHourlySalary.Name = "TextBoxHourlySalary"
+        Me.TextBoxHourlySalary.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxHourlySalary.TabIndex = 33
+        '
+        'ButtonInsertEmployee
+        '
+        Me.ButtonInsertEmployee.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonInsertEmployee.Location = New System.Drawing.Point(651, 294)
+        Me.ButtonInsertEmployee.Name = "ButtonInsertEmployee"
+        Me.ButtonInsertEmployee.Size = New System.Drawing.Size(151, 23)
+        Me.ButtonInsertEmployee.TabIndex = 35
+        Me.ButtonInsertEmployee.Text = "INSERT EPMLOYEE"
+        Me.ButtonInsertEmployee.UseVisualStyleBackColor = True
+        '
+        'TextBoxInsertEmployeeReturn
+        '
+        Me.TextBoxInsertEmployeeReturn.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxInsertEmployeeReturn.Location = New System.Drawing.Point(651, 323)
+        Me.TextBoxInsertEmployeeReturn.Name = "TextBoxInsertEmployeeReturn"
+        Me.TextBoxInsertEmployeeReturn.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxInsertEmployeeReturn.TabIndex = 36
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(969, 465)
+        Me.ClientSize = New System.Drawing.Size(1274, 681)
+        Me.Controls.Add(Me.TextBoxInsertEmployeeReturn)
+        Me.Controls.Add(Me.ButtonInsertEmployee)
+        Me.Controls.Add(Me.LabelHourlySalary)
+        Me.Controls.Add(Me.TextBoxHourlySalary)
+        Me.Controls.Add(Me.LabelTitle)
+        Me.Controls.Add(Me.TextBoxTitle)
+        Me.Controls.Add(Me.LabelLastName)
+        Me.Controls.Add(Me.TextBoxLastName)
+        Me.Controls.Add(Me.LabelFirstName)
+        Me.Controls.Add(Me.TextBoxFirstName)
+        Me.Controls.Add(Me.LabelEmployeeNumber)
+        Me.Controls.Add(Me.TextBoxEmployeeNumber)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBoxInsertCustomerReturn)
         Me.Controls.Add(Me.TextBoxDeleteEmployeeReturn)
-        Me.Controls.Add(Me.ButtonInsert)
+        Me.Controls.Add(Me.ButtonInsertCustomer)
         Me.Controls.Add(Me.LabelEmailAddress)
         Me.Controls.Add(Me.TextBoxEmailAddress)
         Me.Controls.Add(Me.LabelBillingZIPCide)
@@ -321,7 +465,20 @@ Partial Class Form1
     Friend WithEvents TextBoxBillingZIPCide As TextBox
     Friend WithEvents LabelEmailAddress As Label
     Friend WithEvents TextBoxEmailAddress As TextBox
-    Friend WithEvents ButtonInsert As Button
+    Friend WithEvents ButtonInsertCustomer As Button
     Friend WithEvents TextBoxDeleteEmployeeReturn As TextBox
     Friend WithEvents TextBoxInsertCustomerReturn As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents LabelEmployeeNumber As Label
+    Friend WithEvents TextBoxEmployeeNumber As TextBox
+    Friend WithEvents LabelFirstName As Label
+    Friend WithEvents TextBoxFirstName As TextBox
+    Friend WithEvents LabelLastName As Label
+    Friend WithEvents TextBoxLastName As TextBox
+    Friend WithEvents LabelTitle As Label
+    Friend WithEvents TextBoxTitle As TextBox
+    Friend WithEvents LabelHourlySalary As Label
+    Friend WithEvents TextBoxHourlySalary As TextBox
+    Friend WithEvents ButtonInsertEmployee As Button
+    Friend WithEvents TextBoxInsertEmployeeReturn As TextBox
 End Class

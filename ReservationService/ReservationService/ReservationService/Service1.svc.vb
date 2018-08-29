@@ -11,7 +11,7 @@ Public Class Service1
         Dim retValue As Boolean
 
         'change
-        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=TICKETS;Integrated Security=True")
+        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=WattsALoan;Integrated Security=True")
         objCommand = New SqlCommand("DeleteEmployee", objConnection)
         objCommand.CommandType = CommandType.StoredProcedure
 
@@ -39,6 +39,8 @@ Public Class Service1
     End Function
 #End Region
 
+#Region "Inserts"
+
 #Region "InsertCustomer"
     Public Function InsertCustomer(ByVal DateCreated As DateTime, ByVal FullName As String, ByVal BillingAddress As String, ByVal BillingCity As String, ByVal BillingState As String, ByVal BillingZIPCide As String, ByVal EmailAddress As String) As Boolean Implements IService1.InsertCustomer
 
@@ -47,7 +49,7 @@ Public Class Service1
         Dim retValue As Boolean
 
         'change
-        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=TICKETS;Integrated Security=True")
+        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=WattsALoan;Integrated Security=True")
         objCommand = New SqlCommand("InsertCustomer", objConnection)
         objCommand.CommandType = CommandType.StoredProcedure
 
@@ -103,4 +105,61 @@ Public Class Service1
 
     End Function
 #End Region
+
+#Region "InsertEmployee"
+    Public Function InsertEmployee(ByVal EmployeeNumber As Integer, ByVal FirstName As String, ByVal LastName As String, ByVal Title As String, ByVal HourlySalary As Double) As Boolean Implements IService1.InsertEmployee
+
+        Dim objConnection As SqlConnection
+        Dim objCommand As SqlCommand
+        Dim retValue As Boolean
+
+        'change
+        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=WattsALoan;Integrated Security=True")
+        objCommand = New SqlCommand("InsertCustomer", objConnection)
+        objCommand.CommandType = CommandType.StoredProcedure
+
+        Dim objParameter1 As New SqlParameter("@EmployeeNumber", SqlDbType.NVarChar, 10)
+        objCommand.Parameters.Add(objParameter1)
+        objParameter1.Direction = ParameterDirection.Input
+        objParameter1.Value = EmployeeNumber
+
+        Dim objParameter2 As New SqlParameter("@FirstName", SqlDbType.NVarChar, 20)
+        objCommand.Parameters.Add(objParameter2)
+        objParameter2.Direction = ParameterDirection.Input
+        objParameter2.Value = FirstName
+
+        Dim objParameter3 As New SqlParameter("@LastName", SqlDbType.NVarChar, 10)
+        objCommand.Parameters.Add(objParameter3)
+        objParameter3.Direction = ParameterDirection.Input
+        objParameter3.Value = LastName
+
+        Dim objParameter4 As New SqlParameter("@Title", SqlDbType.NVarChar, 100)
+        objCommand.Parameters.Add(objParameter4)
+        objParameter4.Direction = ParameterDirection.Input
+        objParameter4.Value = Title
+
+        Dim objParameter5 As New SqlParameter("@HourlySalary", SqlDbType.Money)
+        objCommand.Parameters.Add(objParameter5)
+        objParameter5.Direction = ParameterDirection.Input
+        objParameter5.Value = HourlySalary
+
+        Dim objOutputParameter As New SqlParameter("@Response", SqlDbType.Bit)
+        objCommand.Parameters.Add(objOutputParameter)
+        objOutputParameter.Direction = ParameterDirection.Output
+
+        objConnection.Open()
+
+        objCommand.ExecuteNonQuery()
+        retValue = objCommand.Parameters("@Response").Value
+        objConnection.Close()
+
+        If retValue Then Return True
+
+        Return False
+
+
+    End Function
+#End Region
+#End Region
+
 End Class

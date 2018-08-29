@@ -8,5 +8,7 @@ Public Interface IService1
     <OperationContract()>
     Function InsertCustomer(ByVal DateCreated As DateTime, ByVal FullName As String, ByVal BillingAddress As String, ByVal BillingCity As String, ByVal BillingState As String, ByVal BillingZIPCide As String, ByVal EmailAddress As String) As Boolean
 
+    <OperationContract>
+    Function InsertEmployee(ByVal EmployeeNumber As Integer, ByVal FirstName As String, ByVal LastName As String, ByVal Title As String, ByVal HourlySalary As Double) As Boolean
 End Interface
 

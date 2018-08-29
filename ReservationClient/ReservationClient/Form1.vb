@@ -36,8 +36,10 @@ Public Class Form1
         TextBox1.Text = retValue.ToString
 
     End Sub
+#Region "Inserts"
 
-    Private Sub ButtonInsert_Click(sender As Object, e As EventArgs) Handles ButtonInsert.Click
+#Region "InsertCustomer"
+    Private Sub ButtonInsert_Click(sender As Object, e As EventArgs) Handles ButtonInsertCustomer.Click
         Dim objConnection As SqlConnection
         Dim objCommand As SqlCommand
         Dim retValue As Boolean
@@ -94,6 +96,60 @@ Public Class Form1
 
         TextBoxInsertCustomerReturn.Text = retValue.ToString
     End Sub
+#End Region
+
+#Region "InsertEmplyee"
+    Private Sub ButtonInsertEmployee_Click(sender As Object, e As EventArgs) Handles ButtonInsertEmployee.Click
+        Dim objConnection As SqlConnection
+        Dim objCommand As SqlCommand
+        Dim retValue As Boolean
+
+        'change
+        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=WattsALoan;Integrated Security=True")
+        objCommand = New SqlCommand("InsertCustomer", objConnection)
+        objCommand.CommandType = CommandType.StoredProcedure
+
+        Dim objParameter1 As New SqlParameter("@EmployeeNumber", SqlDbType.NVarChar, 10)
+        objCommand.Parameters.Add(objParameter1)
+        objParameter1.Direction = ParameterDirection.Input
+        objParameter1.Value = TextBoxEmployeeNumber
+
+        Dim objParameter2 As New SqlParameter("@FirstName", SqlDbType.NVarChar, 20)
+        objCommand.Parameters.Add(objParameter2)
+        objParameter2.Direction = ParameterDirection.Input
+        objParameter2.Value = TextBoxFirstName
+
+        Dim objParameter3 As New SqlParameter("@LastName", SqlDbType.NVarChar, 10)
+        objCommand.Parameters.Add(objParameter3)
+        objParameter3.Direction = ParameterDirection.Input
+        objParameter3.Value = TextBoxLastName
+
+        Dim objParameter4 As New SqlParameter("@Title", SqlDbType.NVarChar, 100)
+        objCommand.Parameters.Add(objParameter4)
+        objParameter4.Direction = ParameterDirection.Input
+        objParameter4.Value = TextBoxTitle
+
+        Dim objParameter5 As New SqlParameter("@HourlySalary", SqlDbType.Money)
+        objCommand.Parameters.Add(objParameter5)
+        objParameter5.Direction = ParameterDirection.Input
+        objParameter5.Value = TextBoxHourlySalary
+
+        Dim objOutputParameter As New SqlParameter("@Response", SqlDbType.Bit)
+        objCommand.Parameters.Add(objOutputParameter)
+        objOutputParameter.Direction = ParameterDirection.Output
+
+        objConnection.Open()
+
+        objCommand.ExecuteNonQuery()
+        retValue = objCommand.Parameters("@Response").Value
+        objConnection.Close()
+
+        TextBoxInsertCustomerReturn.Text = retValue.ToString
+    End Sub
+#End Region
+#End Region
+
+#Region "DeleteEmployee"
 
     Private Sub ButtonDeleteEmployee_Click(sender As Object, e As EventArgs) Handles ButtonDeleteEmployee.Click
         Dim objConnection As SqlConnection
@@ -122,4 +178,8 @@ Public Class Form1
 
         TextBoxDeleteEmployeeReturn.Text = retValue.ToString
     End Sub
+
+
+#End Region
+
 End Class
