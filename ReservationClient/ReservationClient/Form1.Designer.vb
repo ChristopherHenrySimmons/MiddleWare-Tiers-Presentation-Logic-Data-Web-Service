@@ -22,10 +22,6 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.seatType = New System.Windows.Forms.ComboBox()
-        Me.classType = New System.Windows.Forms.ComboBox()
         Me.LabelDeleteEmployee = New System.Windows.Forms.Label()
         Me.TextBoxEmployeeID = New System.Windows.Forms.TextBox()
         Me.LabelEmployeeID = New System.Windows.Forms.Label()
@@ -59,41 +55,33 @@ Partial Class Form1
         Me.TextBoxHourlySalary = New System.Windows.Forms.TextBox()
         Me.ButtonInsertEmployee = New System.Windows.Forms.Button()
         Me.TextBoxInsertEmployeeReturn = New System.Windows.Forms.TextBox()
+        Me.LabelInsertLoan = New System.Windows.Forms.Label()
+        Me.ButtonLoanTypeInsert = New System.Windows.Forms.Button()
+        Me.LabelLoanType = New System.Windows.Forms.Label()
+        Me.TextBoxLoanType = New System.Windows.Forms.TextBox()
+        Me.TextBoxLoanTypeReturn = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.ButtonInsertLoanAllocation = New System.Windows.Forms.Button()
+        Me.LabelLoanAmount = New System.Windows.Forms.Label()
+        Me.TextBoxLoanAmount = New System.Windows.Forms.TextBox()
+        Me.LabelLoanTypeID = New System.Windows.Forms.Label()
+        Me.TextBoxLoanTypeID = New System.Windows.Forms.TextBox()
+        Me.LabelAccountNumber = New System.Windows.Forms.Label()
+        Me.TextBoxAccountNumber = New System.Windows.Forms.TextBox()
+        Me.LabelLoanCustomerID = New System.Windows.Forms.Label()
+        Me.TextBoxLoanCustomerID = New System.Windows.Forms.TextBox()
+        Me.LabelLoanEmployeeID = New System.Windows.Forms.Label()
+        Me.TextBoxLoanEmployeeID = New System.Windows.Forms.TextBox()
+        Me.LabelDatePrepared = New System.Windows.Forms.Label()
+        Me.TextBoxDatePrepared = New System.Windows.Forms.TextBox()
+        Me.LabelInsertLoanAllocation = New System.Windows.Forms.Label()
+        Me.LabelInterestRate = New System.Windows.Forms.Label()
+        Me.TextBoxInterestRate = New System.Windows.Forms.TextBox()
+        Me.LabelPeriods = New System.Windows.Forms.Label()
+        Me.TextBoxPeriods = New System.Windows.Forms.TextBox()
+        Me.LabelDateCreated = New System.Windows.Forms.Label()
+        Me.TextBoxDateCreated = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(822, 495)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Submit"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(822, 524)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(75, 20)
-        Me.TextBox1.TabIndex = 1
-        '
-        'seatType
-        '
-        Me.seatType.FormattingEnabled = True
-        Me.seatType.Items.AddRange(New Object() {"Window", "Middle", "Aisle"})
-        Me.seatType.Location = New System.Drawing.Point(822, 441)
-        Me.seatType.Name = "seatType"
-        Me.seatType.Size = New System.Drawing.Size(121, 21)
-        Me.seatType.TabIndex = 2
-        '
-        'classType
-        '
-        Me.classType.FormattingEnabled = True
-        Me.classType.Items.AddRange(New Object() {"Economy", "First"})
-        Me.classType.Location = New System.Drawing.Point(822, 468)
-        Me.classType.Name = "classType"
-        Me.classType.Size = New System.Drawing.Size(121, 21)
-        Me.classType.TabIndex = 3
         '
         'LabelDeleteEmployee
         '
@@ -137,7 +125,7 @@ Partial Class Form1
         '
         Me.LabelInsertCustomer.AutoSize = True
         Me.LabelInsertCustomer.Font = New System.Drawing.Font("OCR A Std", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelInsertCustomer.Location = New System.Drawing.Point(321, 9)
+        Me.LabelInsertCustomer.Location = New System.Drawing.Point(402, 9)
         Me.LabelInsertCustomer.Name = "LabelInsertCustomer"
         Me.LabelInsertCustomer.Size = New System.Drawing.Size(250, 22)
         Me.LabelInsertCustomer.TabIndex = 8
@@ -147,7 +135,7 @@ Partial Class Form1
         '
         Me.LabelFullName.AutoSize = True
         Me.LabelFullName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelFullName.Location = New System.Drawing.Point(322, 56)
+        Me.LabelFullName.Location = New System.Drawing.Point(403, 99)
         Me.LabelFullName.Name = "LabelFullName"
         Me.LabelFullName.Size = New System.Drawing.Size(88, 14)
         Me.LabelFullName.TabIndex = 10
@@ -156,7 +144,7 @@ Partial Class Form1
         'TextBoxFullName
         '
         Me.TextBoxFullName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxFullName.Location = New System.Drawing.Point(325, 73)
+        Me.TextBoxFullName.Location = New System.Drawing.Point(406, 116)
         Me.TextBoxFullName.Name = "TextBoxFullName"
         Me.TextBoxFullName.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxFullName.TabIndex = 9
@@ -165,7 +153,7 @@ Partial Class Form1
         '
         Me.LabelBillingAddress.AutoSize = True
         Me.LabelBillingAddress.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelBillingAddress.Location = New System.Drawing.Point(322, 99)
+        Me.LabelBillingAddress.Location = New System.Drawing.Point(403, 142)
         Me.LabelBillingAddress.Name = "LabelBillingAddress"
         Me.LabelBillingAddress.Size = New System.Drawing.Size(142, 14)
         Me.LabelBillingAddress.TabIndex = 12
@@ -174,7 +162,7 @@ Partial Class Form1
         'TextBoxBillingAddress
         '
         Me.TextBoxBillingAddress.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxBillingAddress.Location = New System.Drawing.Point(325, 116)
+        Me.TextBoxBillingAddress.Location = New System.Drawing.Point(406, 159)
         Me.TextBoxBillingAddress.Name = "TextBoxBillingAddress"
         Me.TextBoxBillingAddress.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxBillingAddress.TabIndex = 11
@@ -183,7 +171,7 @@ Partial Class Form1
         '
         Me.LabelBillingCity.AutoSize = True
         Me.LabelBillingCity.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelBillingCity.Location = New System.Drawing.Point(322, 146)
+        Me.LabelBillingCity.Location = New System.Drawing.Point(403, 189)
         Me.LabelBillingCity.Name = "LabelBillingCity"
         Me.LabelBillingCity.Size = New System.Drawing.Size(115, 14)
         Me.LabelBillingCity.TabIndex = 14
@@ -192,7 +180,7 @@ Partial Class Form1
         'TextBoxBillingCity
         '
         Me.TextBoxBillingCity.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxBillingCity.Location = New System.Drawing.Point(325, 163)
+        Me.TextBoxBillingCity.Location = New System.Drawing.Point(406, 206)
         Me.TextBoxBillingCity.Name = "TextBoxBillingCity"
         Me.TextBoxBillingCity.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxBillingCity.TabIndex = 13
@@ -201,7 +189,7 @@ Partial Class Form1
         '
         Me.LabelBillingState.AutoSize = True
         Me.LabelBillingState.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelBillingState.Location = New System.Drawing.Point(322, 189)
+        Me.LabelBillingState.Location = New System.Drawing.Point(403, 232)
         Me.LabelBillingState.Name = "LabelBillingState"
         Me.LabelBillingState.Size = New System.Drawing.Size(124, 14)
         Me.LabelBillingState.TabIndex = 16
@@ -210,7 +198,7 @@ Partial Class Form1
         'TextBoxBillingState
         '
         Me.TextBoxBillingState.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxBillingState.Location = New System.Drawing.Point(325, 206)
+        Me.TextBoxBillingState.Location = New System.Drawing.Point(406, 249)
         Me.TextBoxBillingState.Name = "TextBoxBillingState"
         Me.TextBoxBillingState.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxBillingState.TabIndex = 15
@@ -219,7 +207,7 @@ Partial Class Form1
         '
         Me.LabelBillingZIPCide.AutoSize = True
         Me.LabelBillingZIPCide.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelBillingZIPCide.Location = New System.Drawing.Point(322, 232)
+        Me.LabelBillingZIPCide.Location = New System.Drawing.Point(403, 275)
         Me.LabelBillingZIPCide.Name = "LabelBillingZIPCide"
         Me.LabelBillingZIPCide.Size = New System.Drawing.Size(142, 14)
         Me.LabelBillingZIPCide.TabIndex = 18
@@ -228,7 +216,7 @@ Partial Class Form1
         'TextBoxBillingZIPCide
         '
         Me.TextBoxBillingZIPCide.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxBillingZIPCide.Location = New System.Drawing.Point(325, 249)
+        Me.TextBoxBillingZIPCide.Location = New System.Drawing.Point(406, 292)
         Me.TextBoxBillingZIPCide.Name = "TextBoxBillingZIPCide"
         Me.TextBoxBillingZIPCide.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxBillingZIPCide.TabIndex = 17
@@ -237,7 +225,7 @@ Partial Class Form1
         '
         Me.LabelEmailAddress.AutoSize = True
         Me.LabelEmailAddress.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelEmailAddress.Location = New System.Drawing.Point(322, 278)
+        Me.LabelEmailAddress.Location = New System.Drawing.Point(403, 321)
         Me.LabelEmailAddress.Name = "LabelEmailAddress"
         Me.LabelEmailAddress.Size = New System.Drawing.Size(124, 14)
         Me.LabelEmailAddress.TabIndex = 20
@@ -246,7 +234,7 @@ Partial Class Form1
         'TextBoxEmailAddress
         '
         Me.TextBoxEmailAddress.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxEmailAddress.Location = New System.Drawing.Point(325, 295)
+        Me.TextBoxEmailAddress.Location = New System.Drawing.Point(406, 338)
         Me.TextBoxEmailAddress.Name = "TextBoxEmailAddress"
         Me.TextBoxEmailAddress.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxEmailAddress.TabIndex = 19
@@ -254,7 +242,7 @@ Partial Class Form1
         'ButtonInsertCustomer
         '
         Me.ButtonInsertCustomer.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonInsertCustomer.Location = New System.Drawing.Point(325, 337)
+        Me.ButtonInsertCustomer.Location = New System.Drawing.Point(406, 380)
         Me.ButtonInsertCustomer.Name = "ButtonInsertCustomer"
         Me.ButtonInsertCustomer.Size = New System.Drawing.Size(152, 23)
         Me.ButtonInsertCustomer.TabIndex = 21
@@ -272,7 +260,7 @@ Partial Class Form1
         'TextBoxInsertCustomerReturn
         '
         Me.TextBoxInsertCustomerReturn.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxInsertCustomerReturn.Location = New System.Drawing.Point(325, 366)
+        Me.TextBoxInsertCustomerReturn.Location = New System.Drawing.Point(406, 409)
         Me.TextBoxInsertCustomerReturn.Name = "TextBoxInsertCustomerReturn"
         Me.TextBoxInsertCustomerReturn.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxInsertCustomerReturn.TabIndex = 23
@@ -281,7 +269,7 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("OCR A Std", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(647, 9)
+        Me.Label1.Location = New System.Drawing.Point(787, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(250, 22)
         Me.Label1.TabIndex = 24
@@ -291,7 +279,7 @@ Partial Class Form1
         '
         Me.LabelEmployeeNumber.AutoSize = True
         Me.LabelEmployeeNumber.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelEmployeeNumber.Location = New System.Drawing.Point(648, 55)
+        Me.LabelEmployeeNumber.Location = New System.Drawing.Point(788, 55)
         Me.LabelEmployeeNumber.Name = "LabelEmployeeNumber"
         Me.LabelEmployeeNumber.Size = New System.Drawing.Size(142, 14)
         Me.LabelEmployeeNumber.TabIndex = 26
@@ -300,7 +288,7 @@ Partial Class Form1
         'TextBoxEmployeeNumber
         '
         Me.TextBoxEmployeeNumber.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxEmployeeNumber.Location = New System.Drawing.Point(651, 72)
+        Me.TextBoxEmployeeNumber.Location = New System.Drawing.Point(791, 72)
         Me.TextBoxEmployeeNumber.Name = "TextBoxEmployeeNumber"
         Me.TextBoxEmployeeNumber.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxEmployeeNumber.TabIndex = 25
@@ -309,7 +297,7 @@ Partial Class Form1
         '
         Me.LabelFirstName.AutoSize = True
         Me.LabelFirstName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelFirstName.Location = New System.Drawing.Point(648, 99)
+        Me.LabelFirstName.Location = New System.Drawing.Point(788, 99)
         Me.LabelFirstName.Name = "LabelFirstName"
         Me.LabelFirstName.Size = New System.Drawing.Size(97, 14)
         Me.LabelFirstName.TabIndex = 28
@@ -318,7 +306,7 @@ Partial Class Form1
         'TextBoxFirstName
         '
         Me.TextBoxFirstName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxFirstName.Location = New System.Drawing.Point(651, 116)
+        Me.TextBoxFirstName.Location = New System.Drawing.Point(791, 116)
         Me.TextBoxFirstName.Name = "TextBoxFirstName"
         Me.TextBoxFirstName.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxFirstName.TabIndex = 27
@@ -327,7 +315,7 @@ Partial Class Form1
         '
         Me.LabelLastName.AutoSize = True
         Me.LabelLastName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelLastName.Location = New System.Drawing.Point(648, 146)
+        Me.LabelLastName.Location = New System.Drawing.Point(788, 146)
         Me.LabelLastName.Name = "LabelLastName"
         Me.LabelLastName.Size = New System.Drawing.Size(88, 14)
         Me.LabelLastName.TabIndex = 30
@@ -336,7 +324,7 @@ Partial Class Form1
         'TextBoxLastName
         '
         Me.TextBoxLastName.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxLastName.Location = New System.Drawing.Point(651, 163)
+        Me.TextBoxLastName.Location = New System.Drawing.Point(791, 163)
         Me.TextBoxLastName.Name = "TextBoxLastName"
         Me.TextBoxLastName.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxLastName.TabIndex = 29
@@ -345,7 +333,7 @@ Partial Class Form1
         '
         Me.LabelTitle.AutoSize = True
         Me.LabelTitle.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelTitle.Location = New System.Drawing.Point(648, 189)
+        Me.LabelTitle.Location = New System.Drawing.Point(788, 189)
         Me.LabelTitle.Name = "LabelTitle"
         Me.LabelTitle.Size = New System.Drawing.Size(52, 14)
         Me.LabelTitle.TabIndex = 32
@@ -354,7 +342,7 @@ Partial Class Form1
         'TextBoxTitle
         '
         Me.TextBoxTitle.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxTitle.Location = New System.Drawing.Point(651, 206)
+        Me.TextBoxTitle.Location = New System.Drawing.Point(791, 206)
         Me.TextBoxTitle.Name = "TextBoxTitle"
         Me.TextBoxTitle.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxTitle.TabIndex = 31
@@ -363,7 +351,7 @@ Partial Class Form1
         '
         Me.LabelHourlySalary.AutoSize = True
         Me.LabelHourlySalary.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelHourlySalary.Location = New System.Drawing.Point(648, 232)
+        Me.LabelHourlySalary.Location = New System.Drawing.Point(788, 232)
         Me.LabelHourlySalary.Name = "LabelHourlySalary"
         Me.LabelHourlySalary.Size = New System.Drawing.Size(124, 14)
         Me.LabelHourlySalary.TabIndex = 34
@@ -372,7 +360,7 @@ Partial Class Form1
         'TextBoxHourlySalary
         '
         Me.TextBoxHourlySalary.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxHourlySalary.Location = New System.Drawing.Point(651, 249)
+        Me.TextBoxHourlySalary.Location = New System.Drawing.Point(791, 249)
         Me.TextBoxHourlySalary.Name = "TextBoxHourlySalary"
         Me.TextBoxHourlySalary.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxHourlySalary.TabIndex = 33
@@ -380,7 +368,7 @@ Partial Class Form1
         'ButtonInsertEmployee
         '
         Me.ButtonInsertEmployee.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonInsertEmployee.Location = New System.Drawing.Point(651, 294)
+        Me.ButtonInsertEmployee.Location = New System.Drawing.Point(791, 294)
         Me.ButtonInsertEmployee.Name = "ButtonInsertEmployee"
         Me.ButtonInsertEmployee.Size = New System.Drawing.Size(151, 23)
         Me.ButtonInsertEmployee.TabIndex = 35
@@ -390,16 +378,278 @@ Partial Class Form1
         'TextBoxInsertEmployeeReturn
         '
         Me.TextBoxInsertEmployeeReturn.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxInsertEmployeeReturn.Location = New System.Drawing.Point(651, 323)
+        Me.TextBoxInsertEmployeeReturn.Location = New System.Drawing.Point(791, 323)
         Me.TextBoxInsertEmployeeReturn.Name = "TextBoxInsertEmployeeReturn"
         Me.TextBoxInsertEmployeeReturn.Size = New System.Drawing.Size(100, 23)
         Me.TextBoxInsertEmployeeReturn.TabIndex = 36
+        '
+        'LabelInsertLoan
+        '
+        Me.LabelInsertLoan.AutoSize = True
+        Me.LabelInsertLoan.Font = New System.Drawing.Font("OCR A Std", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelInsertLoan.Location = New System.Drawing.Point(13, 160)
+        Me.LabelInsertLoan.Name = "LabelInsertLoan"
+        Me.LabelInsertLoan.Size = New System.Drawing.Size(186, 22)
+        Me.LabelInsertLoan.TabIndex = 37
+        Me.LabelInsertLoan.Text = "Insert Loan"
+        '
+        'ButtonLoanTypeInsert
+        '
+        Me.ButtonLoanTypeInsert.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonLoanTypeInsert.Location = New System.Drawing.Point(126, 205)
+        Me.ButtonLoanTypeInsert.Name = "ButtonLoanTypeInsert"
+        Me.ButtonLoanTypeInsert.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonLoanTypeInsert.TabIndex = 40
+        Me.ButtonLoanTypeInsert.Text = "INSERT LOAN"
+        Me.ButtonLoanTypeInsert.UseVisualStyleBackColor = True
+        '
+        'LabelLoanType
+        '
+        Me.LabelLoanType.AutoSize = True
+        Me.LabelLoanType.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelLoanType.Location = New System.Drawing.Point(17, 189)
+        Me.LabelLoanType.Name = "LabelLoanType"
+        Me.LabelLoanType.Size = New System.Drawing.Size(88, 14)
+        Me.LabelLoanType.TabIndex = 39
+        Me.LabelLoanType.Text = "Loan Type"
+        '
+        'TextBoxLoanType
+        '
+        Me.TextBoxLoanType.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxLoanType.Location = New System.Drawing.Point(20, 206)
+        Me.TextBoxLoanType.Name = "TextBoxLoanType"
+        Me.TextBoxLoanType.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxLoanType.TabIndex = 38
+        '
+        'TextBoxLoanTypeReturn
+        '
+        Me.TextBoxLoanTypeReturn.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxLoanTypeReturn.Location = New System.Drawing.Point(61, 235)
+        Me.TextBoxLoanTypeReturn.Name = "TextBoxLoanTypeReturn"
+        Me.TextBoxLoanTypeReturn.Size = New System.Drawing.Size(56, 23)
+        Me.TextBoxLoanTypeReturn.TabIndex = 41
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(163, 631)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 23)
+        Me.TextBox2.TabIndex = 56
+        '
+        'ButtonInsertLoanAllocation
+        '
+        Me.ButtonInsertLoanAllocation.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonInsertLoanAllocation.Location = New System.Drawing.Point(163, 574)
+        Me.ButtonInsertLoanAllocation.Name = "ButtonInsertLoanAllocation"
+        Me.ButtonInsertLoanAllocation.Size = New System.Drawing.Size(152, 37)
+        Me.ButtonInsertLoanAllocation.TabIndex = 55
+        Me.ButtonInsertLoanAllocation.Text = "INSERT LOAN ALLOCATION"
+        Me.ButtonInsertLoanAllocation.UseVisualStyleBackColor = True
+        '
+        'LabelLoanAmount
+        '
+        Me.LabelLoanAmount.AutoSize = True
+        Me.LabelLoanAmount.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelLoanAmount.Location = New System.Drawing.Point(17, 558)
+        Me.LabelLoanAmount.Name = "LabelLoanAmount"
+        Me.LabelLoanAmount.Size = New System.Drawing.Size(106, 14)
+        Me.LabelLoanAmount.TabIndex = 54
+        Me.LabelLoanAmount.Text = "Loan Amount"
+        '
+        'TextBoxLoanAmount
+        '
+        Me.TextBoxLoanAmount.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxLoanAmount.Location = New System.Drawing.Point(20, 575)
+        Me.TextBoxLoanAmount.Name = "TextBoxLoanAmount"
+        Me.TextBoxLoanAmount.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxLoanAmount.TabIndex = 53
+        '
+        'LabelLoanTypeID
+        '
+        Me.LabelLoanTypeID.AutoSize = True
+        Me.LabelLoanTypeID.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelLoanTypeID.Location = New System.Drawing.Point(17, 512)
+        Me.LabelLoanTypeID.Name = "LabelLoanTypeID"
+        Me.LabelLoanTypeID.Size = New System.Drawing.Size(115, 14)
+        Me.LabelLoanTypeID.TabIndex = 52
+        Me.LabelLoanTypeID.Text = "Loan Type ID"
+        '
+        'TextBoxLoanTypeID
+        '
+        Me.TextBoxLoanTypeID.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxLoanTypeID.Location = New System.Drawing.Point(20, 529)
+        Me.TextBoxLoanTypeID.Name = "TextBoxLoanTypeID"
+        Me.TextBoxLoanTypeID.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxLoanTypeID.TabIndex = 51
+        '
+        'LabelAccountNumber
+        '
+        Me.LabelAccountNumber.AutoSize = True
+        Me.LabelAccountNumber.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelAccountNumber.Location = New System.Drawing.Point(17, 469)
+        Me.LabelAccountNumber.Name = "LabelAccountNumber"
+        Me.LabelAccountNumber.Size = New System.Drawing.Size(133, 14)
+        Me.LabelAccountNumber.TabIndex = 50
+        Me.LabelAccountNumber.Text = "Account Number"
+        '
+        'TextBoxAccountNumber
+        '
+        Me.TextBoxAccountNumber.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxAccountNumber.Location = New System.Drawing.Point(20, 486)
+        Me.TextBoxAccountNumber.Name = "TextBoxAccountNumber"
+        Me.TextBoxAccountNumber.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxAccountNumber.TabIndex = 49
+        '
+        'LabelLoanCustomerID
+        '
+        Me.LabelLoanCustomerID.AutoSize = True
+        Me.LabelLoanCustomerID.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelLoanCustomerID.Location = New System.Drawing.Point(17, 426)
+        Me.LabelLoanCustomerID.Name = "LabelLoanCustomerID"
+        Me.LabelLoanCustomerID.Size = New System.Drawing.Size(106, 14)
+        Me.LabelLoanCustomerID.TabIndex = 48
+        Me.LabelLoanCustomerID.Text = "Customer ID"
+        '
+        'TextBoxLoanCustomerID
+        '
+        Me.TextBoxLoanCustomerID.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxLoanCustomerID.Location = New System.Drawing.Point(20, 443)
+        Me.TextBoxLoanCustomerID.Name = "TextBoxLoanCustomerID"
+        Me.TextBoxLoanCustomerID.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxLoanCustomerID.TabIndex = 47
+        '
+        'LabelLoanEmployeeID
+        '
+        Me.LabelLoanEmployeeID.AutoSize = True
+        Me.LabelLoanEmployeeID.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelLoanEmployeeID.Location = New System.Drawing.Point(17, 379)
+        Me.LabelLoanEmployeeID.Name = "LabelLoanEmployeeID"
+        Me.LabelLoanEmployeeID.Size = New System.Drawing.Size(106, 14)
+        Me.LabelLoanEmployeeID.TabIndex = 46
+        Me.LabelLoanEmployeeID.Text = "Employee ID"
+        '
+        'TextBoxLoanEmployeeID
+        '
+        Me.TextBoxLoanEmployeeID.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxLoanEmployeeID.Location = New System.Drawing.Point(20, 396)
+        Me.TextBoxLoanEmployeeID.Name = "TextBoxLoanEmployeeID"
+        Me.TextBoxLoanEmployeeID.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxLoanEmployeeID.TabIndex = 45
+        '
+        'LabelDatePrepared
+        '
+        Me.LabelDatePrepared.AutoSize = True
+        Me.LabelDatePrepared.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelDatePrepared.Location = New System.Drawing.Point(17, 336)
+        Me.LabelDatePrepared.Name = "LabelDatePrepared"
+        Me.LabelDatePrepared.Size = New System.Drawing.Size(295, 14)
+        Me.LabelDatePrepared.TabIndex = 44
+        Me.LabelDatePrepared.Text = "Date Prepared Example 2018-08-31"
+        '
+        'TextBoxDatePrepared
+        '
+        Me.TextBoxDatePrepared.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDatePrepared.Location = New System.Drawing.Point(20, 353)
+        Me.TextBoxDatePrepared.Name = "TextBoxDatePrepared"
+        Me.TextBoxDatePrepared.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxDatePrepared.TabIndex = 43
+        '
+        'LabelInsertLoanAllocation
+        '
+        Me.LabelInsertLoanAllocation.AutoSize = True
+        Me.LabelInsertLoanAllocation.Font = New System.Drawing.Font("OCR A Std", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelInsertLoanAllocation.Location = New System.Drawing.Point(16, 289)
+        Me.LabelInsertLoanAllocation.Name = "LabelInsertLoanAllocation"
+        Me.LabelInsertLoanAllocation.Size = New System.Drawing.Size(362, 22)
+        Me.LabelInsertLoanAllocation.TabIndex = 42
+        Me.LabelInsertLoanAllocation.Text = "Insert Loan Allocation"
+        '
+        'LabelInterestRate
+        '
+        Me.LabelInterestRate.AutoSize = True
+        Me.LabelInterestRate.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelInterestRate.Location = New System.Drawing.Point(17, 611)
+        Me.LabelInterestRate.Name = "LabelInterestRate"
+        Me.LabelInterestRate.Size = New System.Drawing.Size(124, 14)
+        Me.LabelInterestRate.TabIndex = 58
+        Me.LabelInterestRate.Text = "Interest Rate"
+        '
+        'TextBoxInterestRate
+        '
+        Me.TextBoxInterestRate.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxInterestRate.Location = New System.Drawing.Point(20, 628)
+        Me.TextBoxInterestRate.Name = "TextBoxInterestRate"
+        Me.TextBoxInterestRate.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxInterestRate.TabIndex = 57
+        '
+        'LabelPeriods
+        '
+        Me.LabelPeriods.AutoSize = True
+        Me.LabelPeriods.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelPeriods.Location = New System.Drawing.Point(160, 379)
+        Me.LabelPeriods.Name = "LabelPeriods"
+        Me.LabelPeriods.Size = New System.Drawing.Size(70, 14)
+        Me.LabelPeriods.TabIndex = 60
+        Me.LabelPeriods.Text = "Periods"
+        '
+        'TextBoxPeriods
+        '
+        Me.TextBoxPeriods.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxPeriods.Location = New System.Drawing.Point(163, 396)
+        Me.TextBoxPeriods.Name = "TextBoxPeriods"
+        Me.TextBoxPeriods.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxPeriods.TabIndex = 59
+        '
+        'LabelDateCreated
+        '
+        Me.LabelDateCreated.AutoSize = True
+        Me.LabelDateCreated.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelDateCreated.Location = New System.Drawing.Point(403, 55)
+        Me.LabelDateCreated.Name = "LabelDateCreated"
+        Me.LabelDateCreated.Size = New System.Drawing.Size(286, 14)
+        Me.LabelDateCreated.TabIndex = 62
+        Me.LabelDateCreated.Text = "Date Created Example 2018-08-31"
+        '
+        'TextBoxDateCreated
+        '
+        Me.TextBoxDateCreated.Font = New System.Drawing.Font("OCR A Std", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDateCreated.Location = New System.Drawing.Point(406, 72)
+        Me.TextBoxDateCreated.Name = "TextBoxDateCreated"
+        Me.TextBoxDateCreated.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxDateCreated.TabIndex = 63
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 681)
+        Me.Controls.Add(Me.TextBoxDateCreated)
+        Me.Controls.Add(Me.LabelDateCreated)
+        Me.Controls.Add(Me.LabelPeriods)
+        Me.Controls.Add(Me.TextBoxPeriods)
+        Me.Controls.Add(Me.LabelInterestRate)
+        Me.Controls.Add(Me.TextBoxInterestRate)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.ButtonInsertLoanAllocation)
+        Me.Controls.Add(Me.LabelLoanAmount)
+        Me.Controls.Add(Me.TextBoxLoanAmount)
+        Me.Controls.Add(Me.LabelLoanTypeID)
+        Me.Controls.Add(Me.TextBoxLoanTypeID)
+        Me.Controls.Add(Me.LabelAccountNumber)
+        Me.Controls.Add(Me.TextBoxAccountNumber)
+        Me.Controls.Add(Me.LabelLoanCustomerID)
+        Me.Controls.Add(Me.TextBoxLoanCustomerID)
+        Me.Controls.Add(Me.LabelLoanEmployeeID)
+        Me.Controls.Add(Me.TextBoxLoanEmployeeID)
+        Me.Controls.Add(Me.LabelDatePrepared)
+        Me.Controls.Add(Me.TextBoxDatePrepared)
+        Me.Controls.Add(Me.LabelInsertLoanAllocation)
+        Me.Controls.Add(Me.TextBoxLoanTypeReturn)
+        Me.Controls.Add(Me.ButtonLoanTypeInsert)
+        Me.Controls.Add(Me.LabelLoanType)
+        Me.Controls.Add(Me.TextBoxLoanType)
+        Me.Controls.Add(Me.LabelInsertLoan)
         Me.Controls.Add(Me.TextBoxInsertEmployeeReturn)
         Me.Controls.Add(Me.ButtonInsertEmployee)
         Me.Controls.Add(Me.LabelHourlySalary)
@@ -433,21 +683,12 @@ Partial Class Form1
         Me.Controls.Add(Me.LabelEmployeeID)
         Me.Controls.Add(Me.TextBoxEmployeeID)
         Me.Controls.Add(Me.LabelDeleteEmployee)
-        Me.Controls.Add(Me.classType)
-        Me.Controls.Add(Me.seatType)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents seatType As ComboBox
-    Friend WithEvents classType As ComboBox
     Friend WithEvents LabelDeleteEmployee As Label
     Friend WithEvents TextBoxEmployeeID As TextBox
     Friend WithEvents LabelEmployeeID As Label
@@ -481,4 +722,30 @@ Partial Class Form1
     Friend WithEvents TextBoxHourlySalary As TextBox
     Friend WithEvents ButtonInsertEmployee As Button
     Friend WithEvents TextBoxInsertEmployeeReturn As TextBox
+    Friend WithEvents LabelInsertLoan As Label
+    Friend WithEvents ButtonLoanTypeInsert As Button
+    Friend WithEvents LabelLoanType As Label
+    Friend WithEvents TextBoxLoanType As TextBox
+    Friend WithEvents TextBoxLoanTypeReturn As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents ButtonInsertLoanAllocation As Button
+    Friend WithEvents LabelLoanAmount As Label
+    Friend WithEvents TextBoxLoanAmount As TextBox
+    Friend WithEvents LabelLoanTypeID As Label
+    Friend WithEvents TextBoxLoanTypeID As TextBox
+    Friend WithEvents LabelAccountNumber As Label
+    Friend WithEvents TextBoxAccountNumber As TextBox
+    Friend WithEvents LabelLoanCustomerID As Label
+    Friend WithEvents TextBoxLoanCustomerID As TextBox
+    Friend WithEvents LabelLoanEmployeeID As Label
+    Friend WithEvents TextBoxLoanEmployeeID As TextBox
+    Friend WithEvents LabelDatePrepared As Label
+    Friend WithEvents TextBoxDatePrepared As TextBox
+    Friend WithEvents LabelInsertLoanAllocation As Label
+    Friend WithEvents LabelInterestRate As Label
+    Friend WithEvents TextBoxInterestRate As TextBox
+    Friend WithEvents LabelPeriods As Label
+    Friend WithEvents TextBoxPeriods As TextBox
+    Friend WithEvents LabelDateCreated As Label
+    Friend WithEvents TextBoxDateCreated As TextBox
 End Class

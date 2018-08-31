@@ -162,4 +162,109 @@ Public Class Service1
 #End Region
 #End Region
 
+#Region "InsertLoan"
+    Public Function InsertLoan(ByVal LoanType As String) As Boolean Implements IService1.InsertLoan
+
+        Dim objConnection As SqlConnection
+        Dim objCommand As SqlCommand
+        Dim retValue As Boolean
+
+        'change
+        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=WattsALoan;Integrated Security=True")
+        objCommand = New SqlCommand("InsertLoan", objConnection)
+        objCommand.CommandType = CommandType.StoredProcedure
+
+        Dim objParameter1 As New SqlParameter("@LoanType", SqlDbType.Int)
+        objCommand.Parameters.Add(objParameter1)
+        objParameter1.Direction = ParameterDirection.Input
+        objParameter1.Value = LoanType
+
+
+        Dim objOutputParameter As New SqlParameter("@Response", SqlDbType.Bit)
+        objCommand.Parameters.Add(objOutputParameter)
+        objOutputParameter.Direction = ParameterDirection.Output
+
+        objConnection.Open()
+
+        objCommand.ExecuteNonQuery()
+        retValue = objCommand.Parameters("@Response").Value
+        objConnection.Close()
+
+        If retValue Then Return True
+
+        Return False
+
+
+    End Function
+#End Region
+
+#Region "InsertLoanAllocation"
+    Public Function InsertLoanAllocation(ByVal DatePreperd As DateTime, ByVal EmployeeID As Integer, ByVal CustomerID As Integer, ByVal AccountNumber As String, ByVal LoanTypeID As String, ByVal LoanAmount As Double, ByVal InterestRate As Decimal, ByVal Periods As Decimal) As Boolean Implements IService1.InsertLoanAllocation
+
+        Dim objConnection As SqlConnection
+        Dim objCommand As SqlCommand
+        Dim retValue As Boolean
+
+        'change
+        objConnection = New SqlConnection("Data Source=PE203-30\MSSQLSVR;Initial Catalog=WattsALoan;Integrated Security=True")
+        objCommand = New SqlCommand("InsertLoan", objConnection)
+        objCommand.CommandType = CommandType.StoredProcedure
+
+        Dim objParameter1 As New SqlParameter("@DatePreperd", SqlDbType.DateTime2)
+        objCommand.Parameters.Add(objParameter1)
+        objParameter1.Direction = ParameterDirection.Input
+        objParameter1.Value = DatePreperd
+
+        Dim objParameter2 As New SqlParameter("@EmployeeID", SqlDbType.Int)
+        objCommand.Parameters.Add(objParameter2)
+        objParameter2.Direction = ParameterDirection.Input
+        objParameter2.Value = EmployeeID
+
+        Dim objParameter3 As New SqlParameter("@CustomerID", SqlDbType.Int)
+        objCommand.Parameters.Add(objParameter3)
+        objParameter3.Direction = ParameterDirection.Input
+        objParameter3.Value = CustomerID
+
+        Dim objParameter4 As New SqlParameter("@AccountNumber", SqlDbType.NVarChar)
+        objCommand.Parameters.Add(objParameter4)
+        objParameter4.Direction = ParameterDirection.Input
+        objParameter4.Value = AccountNumber
+
+        Dim objParameter5 As New SqlParameter("@LoanTypeID", SqlDbType.NVarChar)
+        objCommand.Parameters.Add(objParameter5)
+        objParameter5.Direction = ParameterDirection.Input
+        objParameter5.Value = LoanTypeID
+
+        Dim objParameter6 As New SqlParameter("@LoanAmount", SqlDbType.Money)
+        objCommand.Parameters.Add(objParameter6)
+        objParameter6.Direction = ParameterDirection.Input
+        objParameter6.Value = LoanAmount
+
+        Dim objParameter7 As New SqlParameter("@InterestRate", SqlDbType.Decimal)
+        objCommand.Parameters.Add(objParameter7)
+        objParameter7.Direction = ParameterDirection.Input
+        objParameter7.Value = InterestRate
+
+        Dim objParameter8 As New SqlParameter("@Periods", SqlDbType.Decimal)
+        objCommand.Parameters.Add(objParameter8)
+        objParameter8.Direction = ParameterDirection.Input
+        objParameter8.Value = Periods
+
+        Dim objOutputParameter As New SqlParameter("@Response", SqlDbType.Bit)
+        objCommand.Parameters.Add(objOutputParameter)
+        objOutputParameter.Direction = ParameterDirection.Output
+
+        objConnection.Open()
+
+        objCommand.ExecuteNonQuery()
+        retValue = objCommand.Parameters("@Response").Value
+        objConnection.Close()
+
+        If retValue Then Return True
+
+        Return False
+
+
+    End Function
+#End Region
 End Class

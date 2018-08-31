@@ -10,5 +10,11 @@ Public Interface IService1
 
     <OperationContract>
     Function InsertEmployee(ByVal EmployeeNumber As Integer, ByVal FirstName As String, ByVal LastName As String, ByVal Title As String, ByVal HourlySalary As Double) As Boolean
+
+    <OperationContract>
+    Function InsertLoan(ByVal LoanType As String) As Boolean
+
+    <OperationContract>
+    Function InsertLoanAllocation(ByVal DatePreperd As DateTime, ByVal EmployeeID As Integer, ByVal CustomerID As Integer, ByVal AccountNumber As String, ByVal LoanTypeID As String, ByVal LoanAmount As Double, ByVal InterestRate As Decimal, ByVal Periods As Decimal) As Boolean
 End Interface
 
